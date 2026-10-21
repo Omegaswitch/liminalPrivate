@@ -1,0 +1,57 @@
+[
+  {
+    "id": "base",
+    "name": "Base",
+    "price": null,
+    "image": "/kits/base.webp",
+    "alt": "The Base kit laid out on kitting paper: a full tenkeyless set with scrambled alpha legends, a function row, arrows, and a yellow Esc and Enter.",
+    "full": "/kits/base-large.webp"
+  },
+  {
+    "id": "noumeno-alpha",
+    "name": "Noúmeno alpha",
+    "price": null,
+    "image": "/kits/noumeno-alpha.webp",
+    "alt": "The Noúmeno alpha kit: four rows of alpha keys with legends in Cyrillic, kana, Greek and other scripts, some turned and mirrored.",
+    "full": "/kits/noumeno-alpha-large.webp"
+  },
+  {
+    "id": "novelties",
+    "name": "Novelties",
+    "price": null,
+    "image": "/kits/novelties.webp",
+    "alt": "The Novelties kit: keys printed with hand-drawn line illustrations of figures, buildings, faces and leaves, several of them in yellow.",
+    "full": "/kits/novelties-large.webp"
+  },
+  {
+    "id": "normies",
+    "name": "Normies",
+    "price": null,
+    "image": "/kits/normies.webp",
+    "alt": "The Normies kit: a numpad, bottom-row modifiers with a long spacebar, and a yellow Enter.",
+    "full": "/kits/normies-large.webp"
+  },
+  {
+    "id": "weird",
+    "name": "Weird",
+    "price": null,
+    "image": "/kits/weird.webp",
+    "alt": "The Weird kit: a stack of blank spacebar-style keys and wide modifiers in assorted lengths, with a few legended keys.",
+    "full": "/kits/weird-large.webp"
+  },
+  {
+    "id": "texture",
+    "name": "Texture",
+    "price": null,
+    "image": "/kits/texture.webp",
+    "alt": "The Texture deskmat: the wallpaper of the hallway, its chevron stripes in two yellows, laid out on kitting paper under the GMK Liminal logo.",
+    "full": "/kits/texture-large.webp",
+    "kind": "deskmat"
+  },
+  {
+    "id": "deskmat-2",
+    "name": "Deskmat 2",
+    "price": null,
+    "kind": "deskmat"
+  }
+]

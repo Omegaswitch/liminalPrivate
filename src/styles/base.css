@@ -1,0 +1,45 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { color-scheme: dark; background: var(--void); overflow-x: hidden; }   /* never any sideways scroll */
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--tube);
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--sick); outline-offset: 3px; }
+
+.sign {
+  font-family: var(--font-sign);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+}
+.data {
+  font-family: var(--font-data);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* clickable things: on hover each letter flips to its mirror image, in a quick wave across the word, and back */
+.ml { display: inline-block; transform: perspective(240px) rotateY(0deg); transition: transform 560ms var(--ease); transition-delay: calc(var(--i) * 24ms); }
+:is(a, button):is(:hover, :focus-visible) .ml { transform: perspective(240px) rotateY(180deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: 1ms !important; }
+}
+
+/* scrambled letters (src/scramble.js): the real letter keeps its place, invisible; the wrong legend is drawn over it in the
+   same font and on the same baseline, inside the letter's own width, with the red and blue of a bad signal pulled a pixel apart.
+   Nothing here takes part in layout. */
+.sl { position: relative; }
+.sl.is-x { -webkit-text-fill-color: transparent; }
+.sl.is-x::after {
+  content: attr(data-g); position: absolute; left: 0; right: 0; top: 0; text-align: center; white-space: nowrap; pointer-events: none;
+  font: inherit; line-height: normal; -webkit-text-fill-color: currentColor; transform: var(--r);
+  text-shadow: -1px 0 rgba(255, 55, 40, 0.55), 1px 0 rgba(40, 190, 255, 0.5);
+}

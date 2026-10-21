@@ -1,0 +1,20 @@
+:root {
+  /* palette: light is green-yellow, shadow is olive, no pure white or black */
+  --carpet: #a5a07b;
+  --wallpaper: #c9bc6a;
+  --tile: #dad7c4;
+  --tube: #e8f4b8;
+  --sick: #8fa34b;
+  --damp: #6f6a3c;
+  --void: #0e0f09;
+  --logo: #fdfcf3;   /* the logo is white, the one near-white allowed: it sits on beige, never on a light page */
+
+  --font-display: 'Instrument Sans', system-ui, sans-serif;
+  --font-sign: 'Archivo Narrow', 'Arial Narrow', sans-serif;
+  --font-data: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);   /* arrivals: a quick start, a long settle */
+
+  --gutter: clamp(16px, 4vw, 56px);
+}

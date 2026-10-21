@@ -1,0 +1,28 @@
+[
+  {
+    "src": "/renders/render-1.webp",
+    "alt": "A wooden chair tipped over a keyboard in a yellow office hallway, with a second keyboard half sunk into the carpet beside it."
+  },
+  {
+    "src": "/renders/render-2.webp",
+    "alt": "A close view of the keyboard resting in the chair's backrest, showing the beige keycaps and the yellow accent key."
+  },
+  {
+    "src": "/renders/render-3.webp",
+    "alt": "A keyboard standing upright in the carpet of a long yellow hallway under rows of fluorescent panels."
+  },
+  {
+    "src": "/renders/render-4.webp",
+    "alt": "The keyboard sunk into the carpet at an angle, with the legs of the chair overhead."
+  },
+  {
+    "src": "/renders/render-5.webp",
+    "alt": "A keyboard from the set tilted in mid-air in a yellow hallway under a fluorescent panel, its scrambled Cyrillic and kana legends sharp against a blurred red doorway.",
+    "full": "/renders/render-5-large.webp"
+  },
+  {
+    "src": "/renders/render-6.webp",
+    "alt": "A cleaner take on the same shot: a keyboard from the set tilted in mid-air in the yellow hallway, its Cyrillic and kana legends clear against a blurred red doorway.",
+    "full": "/renders/render-6-large.webp"
+  }
+]

@@ -1,0 +1,135 @@
+/* the kits showcase: sterile and flat, the beige of the carpet, the same as the band under the name.
+   One accent (sick), square corners throughout, hierarchy from weight and size rather than boxes. */
+.showcase {
+  position: relative; z-index: 10; overflow-x: clip; background: var(--carpet); color: var(--void);   /* the full-bleed bands are 100vw wide, which with a classic scrollbar is wider than the page: clipped, so no sideways scroll */
+  padding: 0 var(--gutter) 96px;
+}
+.sc-wrap { max-width: 1760px; margin: 0 auto; }
+.showcase { --quiet: color-mix(in srgb, var(--damp) 60%, var(--void)); }   /* --damp is too faint for small text on beige */
+.showcase .sign { color: var(--quiet); }
+.showcase h2, .showcase h3 { text-wrap: balance; }
+.showcase p { text-wrap: pretty; }
+.showcase .data { font-variant-numeric: tabular-nums; }
+
+.sc-section { padding: 136px 0 0; display: grid; gap: 44px; }
+.sc-head { display: grid; gap: 12px; max-width: 60ch; }
+.sc-title { font-weight: 500; font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.02; letter-spacing: -0.025em; }
+.sc-lede { color: color-mix(in srgb, var(--void) 78%, var(--carpet)); max-width: 60ch; }
+
+/* ---- the reveal: the name on top, the hero render edge to edge under it; together they fill the landing screen ---- */
+.sc-reveal { display: flex; flex-direction: column; gap: 0; padding-top: 0; min-height: 100svh; }
+.sc-render { flex: 1 1 auto; position: relative; overflow: hidden; margin: 0 0 0 calc(50% - 50vw); min-height: max(46svh, min(78svh, 100vw)); width: 100vw; background: color-mix(in srgb, var(--tile) 45%, var(--carpet)); }
+.sc-render img, .render img, .kit-img img { opacity: 0; transition: opacity 600ms var(--ease); }
+.is-loaded > img { opacity: 1; }
+.sc-render, .render, .kit-img { background: linear-gradient(100deg, color-mix(in srgb, var(--tile) 30%, var(--carpet)) 30%, color-mix(in srgb, var(--tile) 62%, var(--carpet)) 50%, color-mix(in srgb, var(--tile) 30%, var(--carpet)) 70%) 0 0 / 250% 100%; animation: shimmer 1.6s linear infinite; }   /* a skeleton until the picture is in */
+.sc-render.is-loaded, .render.is-loaded, .kit-img.is-loaded { animation: none; }
+.sc-render.is-loaded { background: var(--carpet); }   /* under the hero image, the same beige as the band above it */
+.sc-render img { position: absolute; left: 0; top: -4%; display: block; width: 100%; height: 108%; object-fit: cover; object-position: 50% 62%; }   /* taller than its frame, so parallax can slide it */
+.sc-hero { display: grid; gap: 14px; justify-items: start; background: var(--carpet); margin-inline: calc(50% - 50vw); padding: 84px calc(50vw - 50%) 28px; }   /* a beige band edge to edge, kept short: the render under it is the landing's picture */
+
+.sc-name { margin: 0; width: min(100%, 38rem); line-height: 0; display: flex; align-items: flex-end; gap: 1.5%; }
+.sc-name .logo { flex: 1; min-width: 0; }
+.sc-by { flex: none; display: flex; align-items: flex-end; gap: 0.3em; color: color-mix(in srgb, var(--void) 78%, var(--carpet)); font-size: clamp(0.9rem, 2vw, 1.6rem); font-weight: 500; line-height: 1; }   /* the maker's mark, tucked at the logo's foot, in the text's colour */
+.sc-dk { display: block; height: 1.1em; aspect-ratio: 764 / 1363; background: currentColor; -webkit-mask: var(--dk) center / contain no-repeat; mask: var(--dk) center / contain no-repeat; }   /* the white SVG as a mask, so it takes the text colour */
+.sc-hero .sc-lede { font-size: clamp(1.05rem, 1.4vw, 1.25rem); justify-self: stretch; }   /* full width: at its own width the line fits exactly, and a glitched glyph tips it onto a second line, moving the render */
+@media (min-width: 480px) { .sc-hero .sc-lede { white-space: nowrap; } }   /* and above phone width it never wraps at all, so the render below it cannot move */
+.sc-cta {
+  margin-top: 6px; display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px;
+  background: var(--void); color: var(--tile); text-decoration: none; font-weight: 500;
+  transition: background 220ms var(--ease), transform 160ms var(--ease);
+}
+.sc-cta::after { content: ''; width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform 220ms var(--ease); }
+.sc-cta:hover { background: color-mix(in srgb, var(--void) 82%, var(--sick)); }
+.sc-cta:hover::after { transform: rotate(45deg) translate(1px, -1px); }
+.sc-cta:active { transform: translateY(1px); }
+
+
+/* ---- colorway: one continuous strip, widths roughly in proportion to how much of the board each covers ---- */
+.strip { display: grid; grid-template-columns: 4fr 3fr 1.4fr 1fr; list-style: none; margin: 0; padding: 0; }
+.strip li { display: grid; gap: 3px; align-content: start; min-width: 0; }
+.strip i { display: block; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--damp) 35%, transparent); height: clamp(120px, 16vw, 200px); background: var(--c); margin-bottom: 12px; }
+.strip-name { font-weight: 500; }
+.strip li > :not(i) { padding-right: 14px; }
+
+/* ---- kits and deskmats: a plain grid of names with the price under each ---- */
+.kits { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 32px; }
+.kit { display: grid; gap: 6px; align-content: start; padding-top: 16px; border-top: 1px solid color-mix(in srgb, var(--damp) 45%, transparent); }
+.kit-img { margin: 0 0 10px; aspect-ratio: 1; overflow: hidden; background: color-mix(in srgb, var(--tile) 45%, var(--carpet)); }
+.kit-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.kit h3 { font-weight: 500; font-size: clamp(1.35rem, 2.2vw, 1.9rem); letter-spacing: -0.015em; }
+.kit p { margin: 0; color: var(--quiet); }
+.mats { grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); margin-top: 64px; }   /* the two deskmats side by side on their own row under the kits */
+.mats .kit-img { width: 85%; }   /* a little smaller than the kits' renders */
+
+/* ---- renders: a two-by-two of the squares, the carpet showing between them ---- */
+.renders { --gap: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+.render { margin: 0; overflow: hidden; background: color-mix(in srgb, var(--tile) 45%, var(--carpet)); aspect-ratio: 1; }
+.render img { display: block; width: 100%; height: 116%; margin-top: -8%; object-fit: cover; transition: transform 900ms var(--ease); }
+.render:hover img { transform: scale(1.03); }
+.render:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc((100% - var(--gap)) / 2); }   /* an odd one out sits centred on its own row, uncropped */
+
+/* ---- vendors ---- */
+.vendors { list-style: none; margin: 0; padding: 0; }
+.vendors li { display: grid; grid-template-columns: 1.4fr 0.6fr auto; gap: 16px; padding: 16px 0; align-items: center; }
+.vendors li + li { border-top: 1px solid color-mix(in srgb, var(--damp) 16%, transparent); }
+.vendors .v-name { font-family: var(--font-display); font-weight: 500; }
+.vendors a { color: var(--void); text-decoration: none; border-bottom: 1px solid currentColor; transition: color 200ms; }
+.vendors a:hover { color: var(--sick); }
+.vendors .off { color: var(--quiet); }
+
+.sc-foot { margin-top: 136px; padding-top: 24px; border-top: 1px solid color-mix(in srgb, var(--damp) 35%, transparent); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.sc-foot p { font-weight: 500; }
+.sc-foot-mark .logo { height: 34px; }
+.sc-foot { position: relative; }
+.sc-foot-logos { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 28px; }   /* centred on the page, whatever sits either side */
+.sc-foot-sep { font-size: 1.6rem; font-weight: 300; color: var(--void); opacity: 0.6; }
+.sc-foot-logos img { height: 32px; width: auto; }
+.sc-foot-logos img[src$=".svg"] { filter: invert(1) brightness(0.25); }   /* manu's mark is white; drawn dark on the page */
+.sc-foot-logos img[src$=".webp"] { mix-blend-mode: multiply; }
+.sc-foot-link { color: var(--void); text-decoration: none; border-bottom: 1px solid currentColor; margin-left: auto; }
+.sc-foot button {
+  font: 500 0.92rem var(--font-display); cursor: pointer; background: transparent; padding: 10px 16px; color: var(--void);
+  border: 1px solid color-mix(in srgb, var(--damp) 50%, transparent); transition: border-color 200ms var(--ease), transform 140ms var(--ease);
+}
+.sc-foot button:hover { border-color: var(--void); }
+.sc-foot button:active { transform: translateY(1px); }
+
+/* sections settle in on arrival (motion-safe only; without it everything is simply there) */
+.has-rv .rv { opacity: 0; transform: translateY(18px); transition: opacity 800ms var(--ease), transform 800ms var(--ease); }
+.has-rv .rv.is-in { opacity: 1; transform: none; }
+.has-rv .renders .rv:nth-child(2) { transition-delay: 90ms; }
+.has-rv .renders .rv:nth-child(3) { transition-delay: 180ms; }
+
+/* the landing: the pictures come to rest. The hero render takes its time; the
+   four renders settle the same way, quicker. Visible and at rest by default: only the motion-safe page starts them enlarged. */
+.has-rv .sc-render img { scale: 1.08; transition: opacity 600ms var(--ease), scale 1600ms var(--ease-out); }
+.has-rv .sc-render.is-in img { scale: 1; }
+.has-rv .render img { scale: 1.05; transition: opacity 600ms var(--ease), transform 900ms var(--ease), scale 1100ms var(--ease-out); }
+.has-rv .render.is-in img { scale: 1; }
+
+@media (prefers-reduced-motion: reduce) { .sc-render, .render, .kit-img { animation: none; } }
+
+@media (max-width: 860px) {
+  .sc-section { padding-top: 96px; gap: 32px; }
+  .strip { grid-template-columns: 1fr; gap: 10px; }
+  .strip li { grid-template-columns: 56px 1fr; column-gap: 14px; align-items: center; }
+  .strip i { height: 56px; margin: 0; }
+    .kits { gap: 40px; }
+  .renders { --gap: 10px; }
+  .vendors li { grid-template-columns: 1fr auto auto; }
+  .sc-foot { margin-top: 96px; }
+  .mats .kit-img { width: 100%; }   /* on a phone the deskmat takes the page width, like the kits */
+  /* the footer as a centred stack: the set's logo, the designers' logos smaller under it, then the links */
+  .sc-foot { display: grid; grid-template-columns: auto auto; justify-content: center; justify-items: center; align-items: center; column-gap: 28px; row-gap: 22px; }
+  .sc-foot-mark, .sc-foot-logos { grid-column: 1 / -1; }
+  .sc-foot-mark .logo { height: 30px; }
+  .sc-foot-logos { position: static; transform: none; gap: 18px; }
+  .sc-foot-logos img { height: 22px; }
+  .sc-foot-sep { font-size: 1.1rem; }
+  .sc-foot-link { margin-left: 0; }
+}
+
+/* the click target over each picture (src/lightbox.js) */
+.zoom { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+.zoom:focus-visible { outline-offset: -5px; }
+.render, .kit-img { position: relative; }

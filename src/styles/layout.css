@@ -1,0 +1,33 @@
+/* the page is the kits page from the top: the set's khaki behind it, so an overscroll never shows the dark */
+html, body { background: var(--carpet); }
+
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 30;
+  display: flex; justify-content: flex-end; align-items: center; min-height: 56px;
+  padding: 20px var(--gutter);
+  color: var(--void);
+}
+.topbar::before {                /* the beige under it: strongest at the top, fading out below the bar, with no hard edge */
+  content: ''; position: absolute; inset: 0 0 -40px; z-index: -1; pointer-events: none;
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--carpet) 96%, transparent) 0%, color-mix(in srgb, var(--carpet) 82%, transparent) 45%, color-mix(in srgb, var(--carpet) 40%, transparent) 75%, transparent 100%);
+}
+.topbar .brand {                 /* the mark: smaller and faint until hovered */
+  position: absolute; left: 50%; display: inline-flex; text-decoration: none;
+  opacity: 0.55; transform: translateX(-50%) scale(0.8); transition: opacity 400ms var(--ease);
+}
+.topbar .brand .logo { height: 1.1rem; }
+.topbar .brand:hover { opacity: 1; }
+html:not(.past-hero) .topbar .brand { opacity: 0; pointer-events: none; }   /* the big logo carries the name until the hero render has scrolled by */
+.logo { display: block; aspect-ratio: 1687 / 338; background: url(/logo-mark.png) center / contain no-repeat; }   /* the two-colour GMK Liminal mark, drawn as it is */
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@keyframes shimmer { to { background-position: -150% 0; } }   /* the picture frames' skeleton (showcase.css) */
+
+/* on a touch screen the small text controls get a finger-sized hit area, at least 44px, without changing how they look */
+@media (pointer: coarse) {
+  .sc-foot-link, .sc-foot button { position: relative; }
+  .topbar .brand::after, .sc-foot-link::after, .sc-foot button::after, .lb-close::after {
+    content: ''; position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: max(100%, 48px); height: max(100%, 48px);
+  }
+}
